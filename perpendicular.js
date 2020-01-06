@@ -4,7 +4,7 @@
  * email afmichael73@gmail.com
  *
  * Coding challenge 1
- * COMPUTES THE NUMBER OF PERPENDICULAR SEGMENTS GIVEN A SET OF RANDOM POINTS
+ * COMPUTES THE NUMBER OF PERPENDICULAR SEGMENTS WITH A GIVEN SET OF RANDOM POINTS
  * */
 
 let Point = require("./data_structures/Point");
