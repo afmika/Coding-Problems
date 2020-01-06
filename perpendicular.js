@@ -2,15 +2,16 @@
  * @author afmika
  * github.com/afmika
  * email afmichael73@gmail.com
- *
- * Coding challenge 1
+ */
+ 
+ 
+ /*
  * COMPUTES THE NUMBER OF PERPENDICULAR SEGMENTS WITH A GIVEN SET OF RANDOM POINTS
  * */
 
 let Point = require("./data_structures/Point");
 let Hashmap = require("./data_structures/Hashmap");
 let Segment = require("./data_structures/Segment");
-
 
 let points = [
     new Point(1, 0),
