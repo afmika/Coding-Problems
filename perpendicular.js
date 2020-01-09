@@ -6,7 +6,7 @@
  
  
  /*
- * COMPUTES THE NUMBER OF PERPENDICULAR SEGMENTS WITH A GIVEN SET OF RANDOM POINTS
+ * COMPUTES THE SIZE OF THE SET OF PERPENDICULAR SEGMENTS WITH A GIVEN SET OF RANDOM POINTS
  * */
 
 let Point = require("./data_structures/Point");
@@ -14,14 +14,21 @@ let Hashmap = require("./data_structures/Hashmap");
 let Segment = require("./data_structures/Segment");
 
 let points = [
-    new Point(1, 0),
-    new Point(0, 1),
-    new Point(1, 1),
-    new Point(5, 3),
-    new Point(5, 5),
-    new Point(-1, 1),
-    new Point(1, 5),
+    new Point(1, 0, 'A'),
+    new Point(0, 1, 'B'),
+    new Point(1, 1, 'C'),
+    new Point(5, 3, 'D'),
+    new Point(5, 5, 'E'),
+    new Point(-1, 1, 'F'),
+    new Point(1, 5, 'G'),
 ];
+/*
+for(let i = 0; i < 100; i++) {
+	let rx = Math.floor( Math.random() * 500 );
+	let ry = Math.floor( Math.random() * 500 );
+	points.push(new Point(rx, ry));
+}
+*/
 
 function countPerpendicularLines( points ) {
 
@@ -56,16 +63,14 @@ function countPerpendicularLines( points ) {
         // displays
         let aff_arr = [];
         k.forEach(seg => {
-            let arr = [];
-            seg.vertexes.forEach(p => {
-                arr.push("("+p.x+","+p.y+")");
-            });
-            aff_arr.push( "Segment["+arr.join(", ")+"]");
+            aff_arr.push( seg.toString() );
         });
         console.log(aff_arr.join(" is perpendicular to "));
     });
     return perp_map.key.length;
 }
+
+console.log( "Size ", countPerpendicularLines( points ) );
 
 /*
 let a = new Point(1, 1);
@@ -83,5 +88,3 @@ console.log(h.equals(u), "HASHMAP COMPARE");
 console.log(s1.equals(s2))
 console.log(h.key, h.value)
 */
-
-console.log( countPerpendicularLines( points ) );

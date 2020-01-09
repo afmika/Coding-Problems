@@ -54,4 +54,8 @@ module.exports = class Segment {
     perpendicularTo (segment) {
         return this.scalarProd(segment) == 0;
     }
+	
+	toString() {
+		return "Segment[ "+this.vertexes[0].toString()+", "+this.vertexes[1].toString()+" ]";
+	}
 }
