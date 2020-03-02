@@ -1,7 +1,7 @@
 /*
  * @author afmika
  * github.com/afmika
- * email afmichael73@gmail.com
+ * afmichael73@gmail.com
  */
  
  
@@ -12,23 +12,6 @@
 let Point = require("./data_structures/Point");
 let Hashmap = require("./data_structures/Hashmap");
 let Segment = require("./data_structures/Segment");
-
-let points = [
-    new Point(1, 0, 'A'),
-    new Point(0, 1, 'B'),
-    new Point(1, 1, 'C'),
-    new Point(5, 3, 'D'),
-    new Point(5, 5, 'E'),
-    new Point(-1, 1, 'F'),
-    new Point(1, 5, 'G'),
-];
-/*
-for(let i = 0; i < 100; i++) {
-	let rx = Math.floor( Math.random() * 500 );
-	let ry = Math.floor( Math.random() * 500 );
-	points.push(new Point(rx, ry));
-}
-*/
 
 function countPerpendicularLines( points ) {
 
@@ -69,6 +52,18 @@ function countPerpendicularLines( points ) {
     });
     return perp_map.key.length;
 }
+
+
+
+let points = [
+    new Point(1, 0, 'A'),
+    new Point(0, 1, 'B'),
+    new Point(1, 1, 'C'),
+    new Point(5, 3, 'D'),
+    new Point(5, 5, 'E'),
+    new Point(-1, 1, 'F'),
+    new Point(1, 5, 'G'),
+];
 
 console.log( "Size ", countPerpendicularLines( points ) );
 
