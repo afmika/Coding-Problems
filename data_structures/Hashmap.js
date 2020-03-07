@@ -3,13 +3,14 @@
  * github.com/afmika
  * email afmichael73@gmail.com
  **/
- 
+
 module.exports = class Hashmap {
 
     constructor() {
         this.key = [];
         this.value = [];
     }
+	
 
     set (key, value) {
         let index = 0;

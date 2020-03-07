@@ -16,7 +16,7 @@ Input: arr[] = {0, 2, 3, 4, 1, 6, 8, 9}
 Output: n = 9 and r = 8 
 */
 
-/*
+/**
  * @author afmika
  * github.com/afmika
  * afmichael73@gmail.com
