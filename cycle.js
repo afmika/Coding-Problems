@@ -3,13 +3,19 @@
  * Cycle detection using Floyd's turtle and Hare
  */
 
-// fonction generateur f : list -> list 
-// bound = Card (list) = taille list[]
+/**
+ * Generator function f: list -> list
+ * bound = Card (list) = size list[]
+ * @param {number} bound
+ */
 function f( bound ) {
 	return Math.floor(Math.random() * bound );
 }
 
-// genere une liste de nombre aleatoire inferieur stricte a size
+/** 
+ * Generates a list of random numbers that are lower than size
+ * @param {number} size
+ */
 function generateRandomList( size ) {
 	let list = [];
 	while(list.length < size) {
@@ -18,7 +24,11 @@ function generateRandomList( size ) {
 	return list;
 }
 
-// affiche un extrait de la suite en fonction de limit
+/** 
+ * Displays a preview of the sequence according to limit
+ * @param {number[]} list
+ * @param {number} limit
+ */
 function showSequence(list, limit) {
 	let a = 0;
 	let m = 1;
@@ -32,7 +42,11 @@ function showSequence(list, limit) {
 	}	
 }
 
-// algo de Floyd en action
+/**
+ * Floyd's turtle and hare
+ * @param {number[]} list
+ * @returns {number}
+ */
 function findCycle(list) {
 	let [turtle, hare] = [0, 0];
 	let m = 1;
