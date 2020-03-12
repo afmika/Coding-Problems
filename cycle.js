@@ -67,7 +67,7 @@ let index_sol = findCycle(list);
 console.log("\n- Solution m =", index_sol, " 2m =", 2*index_sol);
 
 
-// demos, juste pour montrer que a_m == a_2m
+// Let's see if a_m == a_2m
 let m = index_sol;
 let count = 0;
 let value = 0;
@@ -75,7 +75,7 @@ while(count < m) {
 	value = list[value];
 	count++;
 }
-console.log(`a${m} = ${ value }`); // affiche a_m
+console.log(`a${m} = ${ value }`); // a_m
 
 count = 0;
 value = 0;
@@ -83,9 +83,7 @@ while(count < 2*m) {
 	value = list[value];
 	count++;
 }
-console.log(`a${2*m} = ${ value }`); // affiche a_2m
+console.log(`a${2*m} = ${ value }`); // a_2m
 
-// affiche un extrait de la suite generee par f : list -> list
-// on peut par exemple 'voir' a l'oeil les cycles (repetitions periodiques) pour deboguer
 console.log("\n- Sequence samples...");
 showSequence(list, 3*m);
