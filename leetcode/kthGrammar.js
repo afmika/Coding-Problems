@@ -36,11 +36,6 @@ Note:
  * @param {number} K
  * @return {number}
  */
-/**
- * @param {number} N
- * @param {number} K
- * @return {number}
- */
 var kthGrammar = function(N, K) {
     let row = '0';
 	/**
@@ -73,7 +68,7 @@ var kthGrammar = function(N, K) {
 	return row[K - 1];
 };
 
-/*
+
 console.log("res ",  kthGrammar(1, 1) );
 console.log("res ",  kthGrammar(2, 1) );
 console.log("res ",  kthGrammar(2, 2) );
@@ -81,7 +76,6 @@ console.log("res ",  kthGrammar(4, 5) );
 console.log("res ",  kthGrammar(3, 3) );
 console.log("res ",  kthGrammar(10, 3) );
 console.log("res ",  kthGrammar(10, 3) );
-*/
 console.log("res ",  kthGrammar(1, 1) );
 console.log("res ",  kthGrammar(2, 1) );
 console.log("res ",  kthGrammar(3, 1) );
