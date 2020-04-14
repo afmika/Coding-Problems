@@ -18,7 +18,7 @@ public:
         size_t size = nums.size();
         for(size_t i = 0; i < size; i++) {
             for(size_t j = i+1; j < size; j++) {
-                if(i != j && ( nums[i] + nums[j] ) == target ) {
+                if(nums[i] + nums[j] == target ) {
                     indices[0] = i; indices[1] = j;
                     return indices;
                 }

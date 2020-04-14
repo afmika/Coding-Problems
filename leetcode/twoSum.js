@@ -18,22 +18,22 @@ return [0, 1].
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-       /**
-        * Bruteforce Optimised
-        *       a0    a1    a2    ...   ...     aN
-        * a0   a0+a0  ...   ...   ...   ...   a0 + aN
-        * a1   ....   ...
-        * .    ....   ...  aK+a2  ...  aK+aP     .
-        * .      .           		.      
-        * .            .                         .
-        * aN   aN+a1  ...   ...   ...   ...   aN + aN
-        *
-        * if the current loop is at index-K then we just only need to care
-        * about row,col >= K, K 
-        **/
+   /**
+	* Bruteforce Optimised
+	*       a0    a1    a2    ...   ...     aN
+	* a0   a0+a0  ...   ...   ...   ...   a0 + aN
+	* a1   ....   ...
+	* .    ....   ...  aK+a2  ...  aK+aP     .
+	* .      .           		.      
+	* .            .                         .
+	* aN   aN+a1  ...   ...   ...   ...   aN + aN
+	*
+	* if the current loop is at index-K then we just only need to care
+	* about row,col >= K, K 
+	**/
     for(let i = 0; i < nums.length; i++) {
 		for(let j = i+1; j < nums.length; j++) {
-			if(i != j && ( nums[i] + nums[j] ) == target ) {
+			if(nums[i] + nums[j] == target ) {
 				return [i, j];
 			}
 		}
@@ -41,4 +41,6 @@ var twoSum = function(nums, target) {
 	return [];
 };
 
-console.log( twoSum([3, 2, 7, 7], 9) );
+let arr = [2, 2, 1, 1, 1, 1, 1, 7, 8, 9, 10];
+let tg = 4;
+console.log( twoSum(arr, tg) );
