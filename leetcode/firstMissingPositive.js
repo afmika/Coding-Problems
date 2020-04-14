@@ -20,6 +20,7 @@ Note:
 
 Your algorithm should run in O(n) time and uses constant extra space.
 */
+
 /**
  * @param {number[]} nums
  * @return {number}
