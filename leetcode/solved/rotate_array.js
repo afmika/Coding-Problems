@@ -36,5 +36,5 @@ var rotate = function(nums, k) {
 };
 
 let arr = [-1,-100,3,99];
-rotate(arr,2)
+rotate(arr,4)
 console.log(arr);
