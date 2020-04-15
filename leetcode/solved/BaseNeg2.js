@@ -29,25 +29,26 @@ Explantion: (-2) ^ 2 = 4
  * @return {string}
  */
 var baseNeg2 = function(N) {
-    let arr = [];
+    let result = '';
     let r = 0;
+	if(N <= 1)
+		return N + '';
     while(true) {
-        const q = parseInt(N / -2);
-		console.log("q", q)
-        r = N -  q * (-2);
-		if(N < -2) {
-			arr.push(r);			
-		} else {
-			arr.push(q);
-			break;			
+        r = N % (-2);
+		r += r < 0 ? 2 : 0;
+		let q = ( -N + r ) / 2;
+		result = r + result;
+		if(q > 0 && q < 2) {
+			result = q + result;
+			break;
 		}
 		N = q;
     }
-    let str = '';
-    for(let i = 0; i < arr.length; i++) {
-        str += arr[arr.length - i - 1];
-    }
-    return str;
+    return result;
 };
 
+console.log( baseNeg2(1) );
 console.log( baseNeg2(2) );
+console.log( baseNeg2(3) );
+console.log( baseNeg2(4) );
+console.log( baseNeg2(123456789) );
