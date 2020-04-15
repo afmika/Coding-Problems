@@ -1,8 +1,8 @@
 public class BaseNeg2 {
     public static String baseNeg2(int N) {
-        StringBuilder result = new StringBuilder("");
+        StringBuilder result = new StringBuilder();
         if(N <= 1)
-            return N + "";
+            return result.insert(0, N).toString();
         int r = 0;
         while(true) {
             r = N % (-2);
@@ -12,8 +12,9 @@ public class BaseNeg2 {
             if(q > 0 && q < 2) {
                 result.insert(0, q);
                 break;
+            } else {
+                N = q;            
             }
-            N = q;
         }
         return result.toString();
     }
