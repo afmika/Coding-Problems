@@ -28,6 +28,7 @@ var merge = function(nums1, m, nums2, n) {
 			nums1[i] = nums2[j];
 			m++;
 			j++;
+			continue;
 		}
 		if( nums1[ i ] >= nums2[ j ]) {
 			let s = nums1.length - 1;
