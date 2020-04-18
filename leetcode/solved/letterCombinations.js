@@ -11,6 +11,7 @@ Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
 
 
 /**
+ * @param {object} map
  * @param {string[]} result_container
  * @param {string} str_temp
  * @param {number} index
