@@ -41,6 +41,7 @@ var minSwapsCouples = function(row) {
 						const temp = row[ k ];
 						row[ k ] = row[ i ];
 						row[ i ] = temp;
+						break;
 					}
 				}
 				start_index = i;
