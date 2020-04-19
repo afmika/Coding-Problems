@@ -63,45 +63,41 @@ function Game(dim) {
 	}
 }
 
-function putQueensOnBoard(game, col, row, n ) {
-	if ( col * row == game.dim * game.dim ) {
-		return n - 1;
-	}
-	// success
-	if ( game.putQueen(col, row ) ) {
-		return putQueensOnBoard(game, 0, 0, n - 1 );
-	}
-	
-	// fail
-	if( col == game.dim ) {
-		return putQueensOnBoard(game, 0, row + 1, n );
-	} else {
-		return putQueensOnBoard(game, col + 1, row, n );
-	}
-}
+/**
+dim 4*4
 
-function solve (game, n ) {
-	if ( n == 1 ) {
-		game.putQueen(0,0);
-		return true;
-	}
-	for(let r = 0; r < game.dim; r++) {
-		for(let c = 0; c < game.dim; c++) {
-			let left = putQueensOnBoard(game, r, c, n);
-			// console.log(c, r, left);
-			if(left <= 0) {
-				return true;
-			} else if ( c + 1 < game.dim && r + 1 < game.dim ) {
-				game.reset();
-			}
+0 1 2 3
+4 5 6 7
+8 9 10 11
+12 13 14 14
+
+case 9 = (y = 2, x = 1)
+y = E(9 / 4) = 2
+x = 9 % 4
+
+*/
+
+function solve (game, index, n ) {
+	let r = Math.floor( index / game.dim ),
+		c = index % game.dim;
+	let done = false;
+	if ( game.putQueen(r, c) ) {
+		if ( solve(game, index, n - 1) ) {
+			done = true;
 		}
+	} else {
+		return solve(game, index + 1, n - 1);
+	}
+	if ( done && n > 0 ) {
+		console.log( 'dsad' );
+		return solve(game, 0, n - 1);
 	}
 	return false;
 } 
 
-let game = new Game(4);
+let n = 5;
+let game = new Game(n);
 game.print();
-
-solve (game, 5 );
+solve (game, 0, n);
 // console.log( putQueensOnBoard(game, 0, 0, 4) );
 game.print();
