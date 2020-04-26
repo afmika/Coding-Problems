@@ -1,16 +1,11 @@
 function Game(dim) {
 	this.dim = dim || 4;
-	this.board = new Array( dim )
-				.fill(0)
-				.map(
-					k => new Array(dim).fill('_')
-				);;
-	
+	this.board = null;
 	this.reset = function ( dont_touch ) {
 		this.board = new Array( dim )
 				.fill(0)
 				.map(
-					k => new Array(dim).fill('_')
+					k => new Array(dim).fill('.')
 				);
 		this.pieces = {};
 		
@@ -78,7 +73,7 @@ function Game(dim) {
 		let str = '';
 		for(let i = 0; i < this.dim; i++) {
 			for(let j = 0; j < this.dim; j++) {
-				str += this.board[i][j] + ' '
+				str += (this.board[i][j] == 1 ? 'Q' : this.board[i][j]);
 			}
 			str += '\n';
 		}
@@ -86,6 +81,8 @@ function Game(dim) {
 			console.log( str );
 		return str;
 	}
+	
+	this.reset();
 }
 
 /**
@@ -124,29 +121,31 @@ function solve (game, index, n_left, init_case, init_n ) {
 		return solve(game, 0, n_left - 1, init_case, init_n);
 	} else {
 		if (game.reasons == 'ROW') {
-			// console.log('dsad');
 			index = ( r + 1 ) * game.dim - 1;
 		}
 		return solve(game, index + 1, n_left, init_case, init_n);
 	}
+	
 	return false;
 } 
 
-function getAllPossibilities( n ) {
-	let game = new Game(n);
+function getAllPossibilities( n_qeens ) {
+	let game = new Game(n_qeens);
 	let clean = {};
 	let res = [];
-	for(let i = 0; i < Math.pow(n, 2); i++) {
+	for(let i = 0; i < Math.pow(n_qeens, 2); i++) {
 		let r = Math.floor( i / game.dim ),
 			c = i % game.dim;
 		game.putQueen(c, r);
 		game.setProtectedCase( c, r );
 		try {			
-			if (  solve (game, 0, n-1, 0, n-1) ) {
+			let start = i == 0 ? 1 : 0;
+			if (  solve (game, start, n_qeens - 1, start, n_qeens - 1) ) {
 				clean[  game.print( false ) ] = true;
 				game.reset();
 			}
 		} catch(e) {
+			console.log(`Error at c = ${c}, r = ${r}`)
 			continue;
 		}
 	}
@@ -160,7 +159,7 @@ let p = getAllPossibilities(5);
 p.forEach(state => {
 	console.log(state);
 });
-console.log(p.length, "Possibilites found");
+console.log(p.length, "Possibilities found");
 /*
 let n = 6;
 let game = new Game(n);
