@@ -49,8 +49,14 @@ Constraints:
     Number of different characters used on the expression is at most 10.
 */
 
-
+/**
+ * @param {Object} map
+ * @param {string[]} words
+ * @param {string} result
+ * @return {boolean}
+ */
 var areEquals = function (map, words, result) {
+    // Each words[i] and result are decoded as one number without leading zeros.
 	let df = 0;
 	for(let i = 0; i < words.length; i++) {
 		let no_leading_zero = map[ words[i][0] ] != 0;
@@ -73,6 +79,10 @@ var areEquals = function (map, words, result) {
 	return df == 0;
 }
 
+/**
+ * @param {Object} obj
+ * @return {Object}
+ */
 var clone = function ( obj ) {
 	let res = {};
 	for(let i in obj)
@@ -80,18 +90,34 @@ var clone = function ( obj ) {
 	return res;
 }
 
-function combi(map, idx_array, idx, words, result) {
-	console.log( map );
+/**
+ * @param {map[]} map
+ * @param {string[]} idx_array
+ * @param {numer} idx
+ * @param {string[]} words
+ * @param {string} result
+ * @return {boolean}
+ */
+function combi(available_digits, map, idx_array, idx, words, result) {
+	// console.log( map );
 	if( areEquals(map, words, result) ) {
+		// console.log(map);
 		return true;
 	}
+
+	// Each character is decoded as one digit (0 - 9).
 	for(let k = 0; k < 10; k++) {
 		// haha recursion go brrrr
-		let clone_map = clone ( map  );
-		if( idx < idx_array.length) {
-			clone_map[ idx_array[idx] ] = k;
-			if ( combi( clone_map, idx_array, idx + 1, words, result ) ) {
-				return true;
+		if( idx >= 0) {
+			// check if k is available (unused)
+			if( available_digits[k] ) {				
+				let clone_map = clone ( map  );
+				let clone_av_digits = clone( available_digits );
+				clone_map[ idx_array[idx] ] = k;	
+				clone_av_digits[k] = false;
+				if ( combi(clone_av_digits, clone_map, idx_array, idx - 1, words, result ) ) {
+					return true;
+				}
 			}
 		}
 	}
@@ -117,10 +143,16 @@ var isSolvable = function(words, result) {
 	for(let k in map) {
 		idx_array.push( k );
 	}
-	return combi( map, idx_array, 0, words, result );
+	// we can also start from 0
+	let available_digits = {};
+	for(let k = 0 ; k < 10; k++) {
+		available_digits[k] = true;
+	}
+	
+	return combi(available_digits, map, idx_array, idx_array.length - 1, words, result );
 };
 
-console.log( isSolvable(['UN', 'UN'], 'DE') );
+console.log( isSolvable(["SEND","MORE"], "MONEY") );
 /*
 console.log( areEquals({
 	'S' : 6, 
