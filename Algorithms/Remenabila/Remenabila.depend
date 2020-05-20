@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1589910867 source:c:\users\michael\documents\remenabila\main.cpp
+	<iostream>
+	<bits/stdc++.h>
+
