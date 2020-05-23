@@ -27,7 +27,6 @@ bool DFS(
 
 
     int max_p = global_map.size();
-    int found_route = false;
     if ( start[0] == end[0] && start[1] == end[1]) {
         return true;
     }
@@ -44,7 +43,9 @@ bool DFS(
             for ( auto d : dir ) {
                 // start <- new_dir
                 vector < int > new_dir = {d[0] + y, d[1] + x };
-                if ( new_dir[0] != start[0] || new_dir[1] != start[1] ) {
+                // new_dir[0] != start[0] || new_dir[1] != start[1]
+				// cooler version :p
+                if ( new_dir[0] ^ start[0] | new_dir[1] ^ start[1] ) {
                     if ( DFS ( current_path, global_map, {y, x}, end, d) ) {
                         for ( auto st : current_path ) {
                             result.push_back( st );
@@ -82,12 +83,15 @@ vector<string> searchPath(vector< vector<int> > global_map, vector< int > start,
 
 int main() {
     vector< vector<int> > global_map = {
-        {1,1,1},
-         {0,0,1},
-         {1,1,1}
+         {1, 1, 0, 0, 0, 0},
+         {0, 1, 0, 1, 1, 1},
+         {0, 1, 0, 1, 0, 1},
+         {0, 1, 0, 1, 0, 1},
+         {0, 1, 0, 1, 1, 1},
+         {0, 1, 1, 1, 0, 1}
     };
 
-    vector< string > points = searchPath( global_map, {0, 0}, {2, 2} );
+    vector< string > points = searchPath( global_map, {0, 0}, {5, 5} );
     for (auto c : points) {
         cout << c << endl;
     }
