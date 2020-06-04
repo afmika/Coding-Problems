@@ -78,11 +78,14 @@ typedef struct ResultItem {
         this->max_delta = max_delta;
         this->min_delta = min_delta;
     }
+    void display() {
+        printf("%f %f %f\n", tot_dist, max_delta, min_delta);
+    }
 } ResultItem;
 
 double dist(vector<int> a, vector<int> b) {
     double sDist = 0;
-    for (int c = 0; c < a.size(); c++) sDist += pow(a[c] - b[c], 2);
+    for (size_t c = 0; c < a.size(); c++) sDist += pow(a[c] - b[c], 2);
     return sqrt((double) sDist);
 }
 
@@ -100,31 +103,43 @@ vector< vector<int> > clonePath(vector< vector<int> > path) {
 
 int scalarProd(vector<int> a, vector<int> b) {
     double sc = 0;
-    for (int c = 0; c < a.size(); c++) sc += a[c] * b[c];
+    for (size_t c = 0; c < a.size(); c++) sc += a[c] * b[c];
     return sc;
 }
 
-void DFS (
+bool isEqual(vector<int> a, vector<int> b) {
+    return a[0] == b[0] && a[1] == b[1] && a[2] == b[2];
+}
+
+bool DFS (
             vector< vector< vector<int> > >& solutions,
-            vector< vector<int> >& cur_path,
+            vector< vector<int> > cur_path,
             vector<int> cur_pos,
             vector<Node> nodes,
-            vector<int> earthDir
+            vector<int> earthDir,
+            int index
         )
 {
-    for (Node node : nodes) {
-        if ( distOrigin(cur_pos) < distOrigin(node.coord) ) {
-            cur_path.push_back(node.coord);
-            if ( node.isEarth ) {
-                solutions.push_back( clonePath( cur_path ) );
-                cur_path.clear();
-            } else {
-                DFS(solutions, cur_path, node.coord, nodes, earthDir);
+    if ( dist(cur_pos, earthDir) <= 10e-6 ) {
+        return true;
+    }
+
+    if ( index == nodes.size()) {
+        return false;
+    }
+
+    for (int i = index; i < nodes.size(); i++) {
+        Node node = nodes[i];
+        vector< vector<int> > clonned_path = clonePath( cur_path );
+        clonned_path.push_back(node.coord);
+        if ( distOrigin(cur_pos) <= distOrigin(node.coord) && !isEqual(cur_pos, node.coord)) {
+            if (DFS(solutions, clonned_path, node.coord, nodes, earthDir, index + 1)) {
+                solutions.push_back( clonned_path );
             }
         }
     }
+    return false;
 }
-
 double roundTo(double n, double q) {
     double p = pow(10, q);
     n = round(n * p);
@@ -144,7 +159,7 @@ std::vector<double> superman(
     vector<Node> nodes;
     for (auto p : fuelingStationsCoordinates) {
         // just doin' some projective stuff
-        if ( scalarProd(p, earthCoordinates) >= 0) {
+        if ( scalarProd(p, earthCoordinates) > 0) {
             Node node(p, false);
             nodes.push_back( node );
         }
@@ -162,21 +177,20 @@ std::vector<double> superman(
     vector< vector<int> > cur_path;
 
     // DFSearch
-    DFS(solutions, cur_path, vector<int>{0, 0, 0}, nodes, earthCoordinates);
+    DFS(solutions, cur_path, {0, 0, 0}, nodes, earthCoordinates, 0);
 
     vector<ResultItem> results;
     for (auto sol : solutions) {
         double cur_total_dist = 0;
         double cur_max_delta = -1;
         double cur_min_delta = INT_MAX;
-        for (int i = 0; i < sol.size(); i++) {
+        for (size_t i = 0; i < sol.size(); i++) {
             double delta = 0;
             if ( i == 0) {
                 delta = distOrigin(sol[i]);
             } else {
                 delta = dist(sol[i], sol[i-1]);
             }
-            delta = ( delta );
 
             cur_max_delta = max(cur_max_delta, delta);
             cur_min_delta = min(cur_min_delta, delta);
@@ -191,58 +205,44 @@ std::vector<double> superman(
         results.push_back( item );
     }
 
-    // results.push_back( *(new ResultItem(3, 1, 1)));
-
+    /*
+    results.clear();
+    results.push_back( *(new ResultItem(3, 1, 1)) );
+    results.push_back( *(new ResultItem(1, 1, 1)) );
+    results.push_back( *(new ResultItem(2, 1, 2)) );
+    results.push_back( *(new ResultItem(3, 1, 3)) );
+    */
     sort(results.begin(), results.end(), [&](ResultItem a, ResultItem b) {
+        if (a.max_delta == b.max_delta) {
+            if (a.min_delta == b.min_delta) {
+                return a.tot_dist < b.tot_dist;
+            }
+            return a.min_delta < b.min_delta;
+        }
         return a.max_delta < b.max_delta;
     });
 
-    if ( results.size() == 0 )return vector<double>{0, 0, 0};
+    // for (auto item : results) item.display();
+
     double min_delta = results[0].min_delta;
     double max_delta = results[0].max_delta;
     double min_dist = results[0].tot_dist;
-
-    // ex: [0 : 6 3 3, 1 : 4 3 1] then 4 3 1 is the best one (
-    for (int i = 0; i < results.size(); i++) {
-        if ( results[i].max_delta == max_delta) {
-            if ( results[i].min_delta < min_delta ) {
-                min_dist = results[i].tot_dist;
-                min_delta = results[i].min_delta;
-            }
-        } else {
-            break;
-        }
-    }
-    vector<ResultItem> same_deltas;
-    for (int i = 0; i < results.size(); i++) {
-        if ( results[i].min_delta == min_delta && max_delta == results[i].max_delta) {
-            same_deltas.push_back( results[i] );
-        }
-    }
-    sort( same_deltas.begin(), same_deltas.end(), [&](ResultItem a, ResultItem b) {
-        return a.tot_dist < b.tot_dist;
-    });
-
-    if ( same_deltas.size() <= 1 ) {
-        return vector<double>{min_dist, max_delta, min_delta};
-    }
-    cout << "double" << endl;
-    min_dist = same_deltas[0].tot_dist;
     return vector<double>{min_dist, max_delta, min_delta};
 }
 
 
 int main() {
-
     vector<double> res = superman(
-        {-25, 0, 0},
+        {2, 2, 2},
         {
-            {0, 1, 0},
-            {1, 0, 0}
+            {0,0,2},
+            {0,2,2},
+            {2,0,0}
         }
     );
 
-    /*
+
+/*
     vector<double> res = superman(
         {23, 21, 26},
         {{-20,3,-20},
@@ -252,7 +252,7 @@ int main() {
          {5,18,-26},
          {-18,27,-26}}
     );
-    */
+*/
 
 /*
     vector<double> res = superman(
