@@ -1,9 +1,6 @@
 /**
-Simple test
-Given two nodes
-
-Returns all possible paths that connects them
-**/
+ * @author afmika
+ */
 
 #include <bits/stdc++.h>
 

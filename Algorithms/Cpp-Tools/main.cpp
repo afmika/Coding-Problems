@@ -1,3 +1,6 @@
+/**
+ * @author afmika
+ */
 
 #include "afTools.h"
 

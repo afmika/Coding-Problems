@@ -1,4 +1,7 @@
-#include <iostream>
+/**
+ * @author afmika
+ */
+
 #include <bits/stdc++.h>
 using namespace std;
 

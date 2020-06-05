@@ -1,3 +1,7 @@
+/**
+ * @author afmika
+ */
+
 #ifndef AFTOOLS_H_INCLUDED
 #define AFTOOLS_H_INCLUDED
 
