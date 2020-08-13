@@ -15,7 +15,7 @@ function combi(result_container, str_temp, index, nums) {
 		return;
 	}
 	for(let k = 0; k < map[ nums[index] ].length; k++) {
-		// haha recursion go brrrr
+		// haha recursion goes brrrr
 		combi( result_container, str_temp + map[ nums[index] ][k], index + 1, nums );				
 	}
 }

@@ -14,7 +14,7 @@ public:
                 st.push( c );
             } else {
                 // closing bracket
-                // Only appens when the string starts with a closing bracket
+                // happens only when the string starts with a closing bracket
                 if ( st.empty() )
                     return false;
                 if ( m[ st.top() ] == c ) {
