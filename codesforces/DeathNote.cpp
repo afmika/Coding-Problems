@@ -11,8 +11,8 @@ int main() {
 		long long input;
 		cin >> input;
 		cur = input + prec;
-		int p = 0;
-		if (d == 1) {
+		long long p = 0;
+		if (d == 0) {
 			p = cur / max_names;
 		} else {
 			p = cur / max_names - prec / max_names;
