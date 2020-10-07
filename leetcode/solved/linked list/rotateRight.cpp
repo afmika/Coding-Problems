@@ -22,7 +22,7 @@ public:
             s++;
         }
         
-        if ( s == 1 || k == s) 
+        if ( s == 1 || k == s || k % s == 0) 
             return head;
         
         if ( k > s )
