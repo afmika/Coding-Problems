@@ -10,7 +10,7 @@ uint8_t b2digitsCount(uint32_t n) {
 
 uint8_t cidr_jump_table (uint32_t netmask) {
 	
-	uint32_t m = 0b11111111111111111111111111111111;
+	uint32_t m = 0xFFFFFFFF;
 	uint8_t dg = b2digitsCount(netmask);
 	
 	// netmask should only contain 1's (right -> left)
