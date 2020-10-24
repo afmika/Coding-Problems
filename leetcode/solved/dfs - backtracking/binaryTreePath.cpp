@@ -50,7 +50,6 @@ public:
         solve(sol, current, node->left, hasChild(node));
         solve(sol, current, node->right, hasChild(node));               
     }
-    
     vector<string> binaryTreePaths(TreeNode* root) {
         if ( root == nullptr )
             return vector<string>{};
@@ -60,4 +59,9 @@ public:
         vector<string> result(sol.begin(), sol.end());
         return result;
     }
+	
+	
+	void dfs(vector<string> str) {
+		
+	}
 };
