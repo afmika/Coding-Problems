@@ -20,9 +20,8 @@ void ContestExerciseImpl::main() {
 	    if ( first ) {
 	        first = false;
 	    } else {
-	        if ( m.find(b) == m.end() ) {
+	        if ( m.find(b) == m.end() )
 	            m[b] = *(new unordered_set<int>());
-	        }
             m[b].insert(a);
 	    }
 	}
@@ -35,12 +34,10 @@ void ContestExerciseImpl::main() {
             if ( p2.second.find(p1.first) != p2.second.end() ) {
                 isChild = true;
                 break;
-            }   
+            }
         }
-        if ( !isChild ) {
-            // cerr << "found e!";
+        if ( !isChild )
             root = p1.first;
-        }
     }
     // cerr << "Root is " << root << endl;
     int i = 0;
@@ -56,9 +53,7 @@ void ContestExerciseImpl::main() {
                 nn.push_back(n);
             }
         }
-        // cerr << nn.size() << endl;
-        if ( nn.size() == 0 )
-            break;
+        if ( nn.size() == 0 ) break;
         current = nn;
     }
     for (int i = 0; i < (int) level.size(); i++) {

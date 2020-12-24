@@ -10,7 +10,6 @@ ContestExerciseImpl::ContestExerciseImpl() : Exercise() {}
 
 void ContestExerciseImpl::main() {
    std::string line;
-   vector<string> inputs; 
    bool first = true;
    int count = 0;
    int total = 0;

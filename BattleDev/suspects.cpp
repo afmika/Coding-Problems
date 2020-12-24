@@ -20,10 +20,10 @@ void ContestExerciseImpl::main() {
 	    if ( first ) {
 	        first = false;
 	    }  else {
-	        if ( line.size() >= 5 ) {
+			int l = line.size();
+	        if ( l >= 5 ) {
 	            int ok = true;
-	            int l = line.size();
-	            for (int i = l - 5; i < (int) l; i++) {
+	            for (int i = l - 5; i < l; i++) {
 	                if ( !(line[i] >= '0' && line[i] <= '9') ) {
 	                    ok = false;
 	                    break;
