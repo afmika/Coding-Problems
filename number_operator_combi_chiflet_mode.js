@@ -1,9 +1,11 @@
 /**
  * @author afmika
  */
-const operators = "+-*/";
+const operators = "*+-/";
 
+let count = 0;
 function compute(a, b, op) {
+	count++;
     switch (op) {
         case "+" : return a + b;
         case "-" : return a - b;
@@ -67,10 +69,11 @@ function find(input, current_sum) {
     }
 } 
 
+// ((1 + 3) * 3) + 1 * 8
 let input = {
-    numbers : [15, 8, 9, 2, 1, 10, 20],
-    target : 735,
-	enable_float_division : false,
+    numbers : [1, 3, 3, 5, 8],
+    target : 20,
+	enable_float_division : true,
 	best_so_far : [],
     solution : []
 };
@@ -79,3 +82,4 @@ find(input, null);
 console.log('Target ', input.target, ' numbers = ', input.numbers);
 console.log('=>', !found ? 'Not found :(' : 'Found it!');
 display(input.best_so_far);
+console.log('Profondeur ', count);
