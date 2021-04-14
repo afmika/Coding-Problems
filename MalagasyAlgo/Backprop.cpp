@@ -20,8 +20,8 @@ double r(double in) {
 void feedfoward (double input, vector<Layer *> layers) {
     for (int i = 0; i < (int) layers.size(); i++) {
         Layer *layer = layers[i];
-        layer->in = input;
-        layer->res = layer->w * layer->in;
+        layer->in    = input;
+        layer->res   = layer->w * layer->in;
         input = layer->res;
     }
 }
