@@ -13,6 +13,6 @@ public class Solution {
         return false;
     }
     public static boolean canWin(int leap, int[] game) {
-        return dfsSolve(0, leap, game);
+        return dfsSolve(0, leap, game, n);
     }
 }
