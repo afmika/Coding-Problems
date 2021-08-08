@@ -70,6 +70,8 @@ function aStar (graph, _start, _end) {
     openList.push(start);
 
     while (openList.length > 0) {
+		openList = openList.sort((a, b) => a.heur - b.heur);
+		console.log(openList.map(a => a.heur));
         let curr = openList.shift();
         if (nodeEqual(curr, end)) {
             console.log(backtrackPath(curr));
