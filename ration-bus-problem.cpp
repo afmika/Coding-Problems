@@ -34,7 +34,6 @@ void solveSimpleCase () {
 
 void solveComplicatedCase (vector<int> work_date) {
     int T = 200000, F = 2000, E = 10000; 
-	// let f a function defined as 
     // let's compute j, j' such that min d = (T - (jE + j'F)) with d >= 0
 	// Formally speaking we want to solve this
 	//  [ argmin_j, j' (T - (jE + j'F)) AND min |j - j'|
@@ -53,7 +52,7 @@ void solveComplicatedCase (vector<int> work_date) {
         int diff = T - (j*E + j_*F);
         // argmin_j, j' (T - (jE + j'F)) 
         if (diff <= sol.diff && diff >= 0) {
-            printf(" %i - %i = %i\n", T, (j*E + j_*F), diff);
+            // printf(" %i - %i = %i\n", T, (j*E + j_*F), diff);
             if (diff == sol.diff) {
                 // will probably never happen but whatever := min |j - j'|
                 if (abs(sol.j - sol.j_) > abs(j - j_))
@@ -71,7 +70,7 @@ int main() {
     // normally we want to 
     solveComplicatedCase (vector<int> {
         // for T = 200 000
-        // we should have 
+        // we should get (j , j') = (17, 12)
         // j = 7 + 7 + 3 which costs 170 000 
         // j' = 5 + 5 + 2 which costs 24 000
         // Left = 200 000 - 194 000 = 6 000
