@@ -28,12 +28,12 @@ void solveSimpleCase () {
             sol.j = j; sol.j_ = j_;
         }
     }
-    printf("\nOptimal solution : dist(i, j) = %i, j = %i, j' = %i", sol.diff, sol.j, sol.j_);
+    printf("\nOptimal solution : dist(i, j) = %i, j = %i, j' = %i\n", sol.diff, sol.j, sol.j_);
 }
 
 
 void solveComplicatedCase (vector<int> work_date) {
-    int T = 300000, F = 2000, E = 10000; 
+    int T = 200000, F = 2000, E = 10000; 
 	// let f a function defined as 
     // let's compute j, j' such that min d = (T - (jE + j'F)) with d >= 0
 	// Formally speaking we want to solve this
@@ -53,6 +53,7 @@ void solveComplicatedCase (vector<int> work_date) {
         int diff = T - (j*E + j_*F);
         // argmin_j, j' (T - (jE + j'F)) 
         if (diff <= sol.diff && diff >= 0) {
+            printf(" %i - %i = %i\n", T, (j*E + j_*F), diff);
             if (diff == sol.diff) {
                 // will probably never happen but whatever := min |j - j'|
                 if (abs(sol.j - sol.j_) > abs(j - j_))
@@ -71,12 +72,12 @@ int main() {
     solveComplicatedCase (vector<int> {
         // for T = 200 000
         // we should have 
-        // j = 7 + 7 + 3 which cost 170 000 
-        // j' = 5 + 5 + 1 which cost 22 000
-        // Left = 200 000 - 192 000 = 8 000
+        // j = 7 + 7 + 3 which costs 170 000 
+        // j' = 5 + 5 + 2 which costs 24 000
+        // Left = 200 000 - 194 000 = 6 000
         0, 0, 0, 0, 0, 1, 1,
         0, 0, 0, 0, 0, 1, 1,
-        0, 0, 0, 0, 0, 1, 1,
+        0, 1, 0, 0, 0, 1, 1,
         0, 0, 1, 0, 0, 1, 1
     });
     return 0;
