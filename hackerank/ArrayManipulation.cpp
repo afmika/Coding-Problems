@@ -29,6 +29,7 @@ int main() {
         cumul += height[i];
         nax = max(nax, cumul);
     }
+	delete height;
     cout << nax;
     return 0;
 }
