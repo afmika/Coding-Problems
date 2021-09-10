@@ -1,25 +1,19 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-
-// https://codeforces.com/problemset/problem/339/A
 int main () {
-	string str;
-	vector<int> values;
-	getline(cin, str);
-	str += "+";
-	string curr = "";
-	for (char c : str) {
-		if (c == '+') {
-			values.push_back(stoi(curr));
-			curr = "";
-		} else curr += c;
+	string s;
+	getline(cin, s);
+	vector<int> nums;
+	// 1, 2 and 3 only (single digits)
+	for (char c : s) {
+	    if (c == '+') continue;
+	    nums.push_back ((int) (c - '0'));
 	}
-	sort (values.begin(), values.end());
-	for (int i = 0, s = values.begin(); i < s; i++) {
-		cout << values[i];
-		if (i + 1 < s)
-			cout << "+";
+	sort(nums.begin(), nums.end());
+	for (int i = 0, n = nums.size(); i < n; i++) {
+	    cout << nums[i];
+	    cout << (i + 1 == n ? "" : "+");
 	}
 	return 0;
 }
