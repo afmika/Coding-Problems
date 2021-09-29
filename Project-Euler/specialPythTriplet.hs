@@ -16,14 +16,14 @@ sqRoot (a2, b2, c2)  = (iSqrt a2, iSqrt b2, iSqrt c2)
 doProduct (a, b, c)  = a * b * c
 
 
-prefectSquare limit = 
+perfectSquare limit = 
     [ n^2 | n <- series ]
         where
             series = [1 .. limit]
 
 generateTriplets limit = 
     let 
-        squares      = prefectSquare limit
+        squares      = perfectSquare limit
         listLessThan = \b -> filter (lessThan b) squares
         validTriplet = \(a2, b2, c2) -> (iSqrt c2) <= limit && (isPerfectSquare c2)
         joinAll      = foldl (++) []
