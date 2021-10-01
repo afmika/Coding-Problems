@@ -34,7 +34,7 @@ int doProd (int chainMax, int currY, int currX, vector<vector<int>> &grid) {
 int solve (int chainMax, vector<vector<int>> &grid) {
     int largest = -1;
     
-	for (int i = 0; i < (int) grid.size(); i++)
+    for (int i = 0; i < (int) grid.size(); i++)
         for (int j = 0; j < (int) grid.size(); j++)
             largest = max (doProd(chainMax, i, j, grid), largest);
 	
