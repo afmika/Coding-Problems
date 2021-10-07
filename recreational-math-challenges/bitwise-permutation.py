@@ -1,7 +1,7 @@
 """
 @author afmika
 Permutation using bitwise operations
-"""
+"**/
 
 def permutHelper (word, curr, m, solutions):
     if len(curr) is len(word):
