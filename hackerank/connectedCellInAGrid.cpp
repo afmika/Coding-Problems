@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 
+// https://www.hackerrank.com/challenges/connected-cell-in-a-grid/problem
 using namespace std;
 
 vector<int> dir {-1, 1, 0}; // 3 x 3 = 9 dir

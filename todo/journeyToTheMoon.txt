@@ -1,0 +1,100 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void debugSet (vector<set<int>> list) {
+    for (auto s : list) {
+        for (int v : s) cerr << v << " ";
+        cerr << "\n";
+    }
+}
+
+int solve (vector<set<int>> &list) {
+    // debugSet(list);
+    int ds = 0, res = 0;
+    for (auto &st : list) {
+        res += ds * st.size();
+        ds += st.size();
+    }
+    return res;
+}
+
+int main () {
+    int n, p;
+    cin >> n >> p;
+    vector<set<int>> iset;
+    set<int> done;
+    while (p--) {
+        int f, s; // same fam
+        cin >> f >> s;
+        
+        bool takeAll = true;
+        for (auto &st : iset) {
+            if (st.find(f) != st.end() || st.find(s) != st.end()) {
+                int r = st.find(f) != st.end() ? s : f;
+                st.insert(r);
+                done.insert(r);
+                takeAll = false;
+                break;
+            }
+        }
+        if (takeAll) {
+            iset.push_back({f, s});
+            done.insert(f);
+            done.insert(s);
+        }
+    }
+    /*
+	idea 2
+	#include <bits/stdc++.h>
+
+using namespace std;
+
+void debugSet (vector<set<int>> list) {
+    for (auto s : list) {
+        for (int v : s) cerr << v << " ";
+        cerr << "\n";
+    }
+}
+
+int main () {
+    int n, p;
+    cin >> n >> p;
+    map<int, set<int>> pair_map;
+    vector<set<int>> iset;
+    set<int> done;
+    while (p--) {
+        int f, s; // same fam
+        cin >> f >> s;
+        pair<int, int> p {min(f, s), max(f, s)};
+        pair_map[p.first].insert(p.second);
+    }
+
+    
+    for (auto &p : pair_map) {
+        cerr << p.first << " : ";
+        for (int i : p.second) cerr << i << " ";
+        cerr << "\n";
+    }
+    
+    // debugSet(iset);
+    // int remove = 0;
+    // for (auto &st : iset) {
+    //     int L = st.size();
+    //     // X*(X - 1) is even
+    //     remove += L * (L - 1) / 2;
+    // }
+    // int all = n * (n - 1) / 2;
+    // cout << (all - remove);
+    return 0;
+}
+
+	*/
+    for (int i = 0; i < n; i++) {
+        if (done.find(i) == done.end()) 
+            iset.push_back({i});
+    }
+    
+    cout << solve(iset);
+    return 0;
+}
