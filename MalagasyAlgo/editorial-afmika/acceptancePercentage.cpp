@@ -4,6 +4,7 @@ using namespace std;
 
 int main() {
     int T, P;
+	
     cin >> T >> P;
     int h[T];
     
