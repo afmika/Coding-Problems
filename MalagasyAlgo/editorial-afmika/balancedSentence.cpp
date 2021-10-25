@@ -1,15 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
-/*
-Not yet fully solved... TLE (2sec)
-*/
+
+
 string solve (string &input) {
     stack<char> sofar;
-    
-    // pretty similar to the classical
-    // match parenthesis problem
-    // O(n)
-    
+        
     for (char c : input) {
         if (c == ' ') continue;
         if (!sofar.empty()) {
