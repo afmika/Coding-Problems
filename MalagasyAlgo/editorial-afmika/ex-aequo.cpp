@@ -30,7 +30,7 @@ void solveUsing (map<int, int> scores) {
 }
 
 int main() {
-    int N, P, id = 0;
+    int N, P;
     cin >> N >> P;
     vector<int> scores;
     
