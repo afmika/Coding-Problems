@@ -27,7 +27,7 @@ int main() {
         int occ = occur[i] - '0'; // total number of occurences of the current character in 'helloworld'
         // if        occ ---> 1 'helloworld'
         // then count[c] ---> ?
-		// answer = count[c] * 1 / occ
+	// answer = count[c] * 1 / occ
         // /!\ the smallest redundant character has higher priority
         // hence the min function
         ans = min (ans, count[c] / occ);
