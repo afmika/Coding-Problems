@@ -34,7 +34,7 @@ int main() {
         double total_used_fuel = (F - R) / 1000.;   // (L)
         double C = total_used_fuel * 100. / dist_km; // (L / 100 km)
         
-        // * The current avg the speed
+        // * The current avg speed
         double speed = dist_km / elapsed_sec; // (Km / s)
         double S = speed * 3600.; // (Km / h)
         
