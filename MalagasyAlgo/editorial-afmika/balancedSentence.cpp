@@ -18,7 +18,7 @@ using namespace std;
 // that's way too much since 1 <= T[i].length <= 200000
 
 // The trick is to use a stack then match every contiguous pair and remove it from our stack (pop it)
-// this works everytime because an *even length* palindrome can be reduced into an empty string ''
+// This works everytime because an *even length* palindrome can be reduced into an empty string ''
 // It runs O(n) in time / O(k) in space (k is the sum of the length of *non even length* palindromes, k <= n)
 // for a single sentence of length n
 
@@ -52,10 +52,10 @@ string solve (string &input) {
 }
 
 int main() {
-    // this part is not important
+    // This part is not important
     string t;
     getline(cin, t);
-    // we have T sentences to process in total
+    // We have T sentences to process in total
     int T = atoi(t.c_str());
     
     while (T--) {

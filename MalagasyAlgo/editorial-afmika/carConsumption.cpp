@@ -23,22 +23,22 @@ int main() {
         double dist_km = D / 1000.; // (m -> km)
         double elapsed_sec = period * 10.; // (sec)
         
-        // * remaining fuel
+        // * Remaining fuel
         double Rl = R / 1000.; // (mL -> L)
         
-        // * the current trip duration (sec -> min)
+        // * The current trip duration (sec -> min)
         double M = elapsed_sec / 60.;
         
-        // * the current fuel consumption
+        // * The current fuel consumption
         // total used := total fuel - remaining fuel (L)
         double total_used_fuel = (F - R) / 1000.;   // (L)
         double C = total_used_fuel * 100. / dist_km; // (L / 100 km)
         
-        // * the current avg the speed
+        // * The current avg the speed
         double speed = dist_km / elapsed_sec; // (Km / s)
         double S = speed * 3600.; // (Km / h)
         
-        // * the remaining fuel autonomy
+        // * The remaining fuel autonomy
         double A = Rl * 100. / C;
 
         printf("%i %i %i %i %i\n", (int) Rl, (int) M, (int) C, (int) S, (int) A);

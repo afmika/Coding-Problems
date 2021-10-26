@@ -24,7 +24,7 @@ void solveUsing (map<int, int> scores) {
         results.push_back(res);
     }
     
-    // sort by the total score in a descending order
+    // Sort by the total score in descending order
     sort(results.begin(), results.end(), [&] (auto a, auto b) {
         return a.S > b.S;
     });
@@ -45,7 +45,7 @@ int main() {
     vector<int> scores;
     
     while (N--) {
-        // process the input
+        // Process the input
         // compute the total score of the current
         // participant at the same time
         int s = 0;
@@ -57,14 +57,14 @@ int main() {
         scores.push_back(s);
     }
     
-    // for each score, we count the number of participants with the same total score value
+    // For each score, we count the number of participants with the same total score value
     map<int, int> shares;
     for (int score : scores) {
         shares[score]++;
     }
     
-    // this is more than enough to build the leaderboard
-    // like an array, a map access takes O(1) in time
+    // This is more than enough to build the leaderboard
+    // Like an array, a map access takes O(1) in time
     // Compexity : O (P*N) in time / O(N) in space
     solveUsing (shares);
     return 0;

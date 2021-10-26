@@ -11,12 +11,12 @@ int main() {
     string in;
     getline(cin, in);
 
-    // count the redundancy of every character
+    // count the redundancy of each character
     map<char, int> count;
     for (char &c : in)
         count[c]++;
     
-    // we want to know how many 'helloworld' we can write using the input characters
+    // we want to know how many 'helloworld' we can make using the input characters
     // a single 'helloword' contains 1 h + 1 e + 3 l + 2 o + 1 w + 1 r + 1 d
     string charset = "helowrd";
     string occur   = "1132111";
