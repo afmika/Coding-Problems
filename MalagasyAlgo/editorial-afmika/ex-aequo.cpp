@@ -1,3 +1,9 @@
+/**
+ * @author afmika
+ * Problem : ex-aequo
+ * AlgoMada Devfest Rookies Contest solution
+ */
+
 #include <bits/stdc++.h>
 using namespace std;
 
