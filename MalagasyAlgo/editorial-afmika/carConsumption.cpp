@@ -26,11 +26,11 @@ int main() {
         // * remaining fuel
         double Rl = R / 1000.; // (mL -> L)
         
-        // * the current trip duration ie. the current period (sec -> min)
+        // * the current trip duration (sec -> min)
         double M = elapsed_sec / 60.;
         
         // * the current fuel consumption
-        // used := total fuel - remaining fuel (L)
+        // total used := total fuel - remaining fuel (L)
         double total_used_fuel = (F - R) / 1000.;   // (L)
         double C = total_used_fuel * 100. / dist_km; // (L / 100 km)
         
