@@ -33,7 +33,7 @@ using namespace std;
 // step 6. stack <- ""   , current_pos <- "hann a[h]i", 'h' matches, remove the top
 // step 7. stack <- "i"  , current_pos <- "hann ah[i]"
 // the stack is not empty therefore the input sentence is not balanced
-// step 8. output "YES"
+// step 8. output "NO"
 
 string solve (string &input) {
     stack<char> sofar;
