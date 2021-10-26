@@ -1,3 +1,9 @@
+/**
+ * @author afmika
+ * Problem : Car Consumption
+ * AlgoMada Devfest Rookies Contest solution
+ */
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -30,10 +36,10 @@ int main() {
         
         // * the current avg the speed
         double speed = dist_km / elapsed_sec; // (Km / s)
-        double S = speed * 3600; // (Km / h)
+        double S = speed * 3600.; // (Km / h)
         
         // * the remaining fuel autonomy
-        double A = Rl * 100 / C;
+        double A = Rl * 100. / C;
 
         printf("%i %i %i %i %i\n", (int) Rl, (int) M, (int) C, (int) S, (int) A);
 
