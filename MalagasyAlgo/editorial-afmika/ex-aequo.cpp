@@ -64,7 +64,7 @@ int main() {
     }
     
     // this is more than enough to build the leaderboard
-    // a map access takes in O(1) in time
+    // like an array, a map access takes O(1) in time
     // Compexity : O (P*N) in time / O(N) in space
     solveUsing (shares);
     return 0;

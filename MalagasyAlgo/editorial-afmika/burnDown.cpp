@@ -20,7 +20,7 @@ int main() {
         if (i + 1 < D)
             point[1][i] = perDay; // ideal task points
     }
-    // point for the last day := total point - (*ideal* total points of the previous days)
+    // points for the last day := total points - (*ideal* total points of the previous days)
     point[1][D - 1] = P - (D - 1) * perDay; // ideal task points for the last day
     
     // Complexity : O(D) in time / O(D) in space

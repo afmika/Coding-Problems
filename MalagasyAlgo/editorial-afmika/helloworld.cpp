@@ -16,8 +16,8 @@ int main() {
     for (char &c : in)
         count[c]++;
     
-    // we want to know how many 'helloworld' we can write using those characters
-    // helloword contains 1 h + 1 e + 3 l + 2 o + 1 w + 1 r + 1 d
+    // we want to know how many 'helloworld' we can write using the input characters
+    // a single 'helloword' contains 1 h + 1 e + 3 l + 2 o + 1 w + 1 r + 1 d
     string charset = "helowrd";
     string occur   = "1132111";
     
@@ -27,7 +27,8 @@ int main() {
         int occ = occur[i] - '0'; // total number of occurences of the current character in 'helloworld'
         // if        occ ---> 1 helloworld
         // then count[c] ---> ?
-        // the smallest redundant character has higher priority
+		// answer = count[c] * 1 / occ
+        // /!\ the smallest redundant character has higher priority
         // hence the min function
         ans = min (ans, count[c] / occ);
     }
