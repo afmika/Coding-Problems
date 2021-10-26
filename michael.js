@@ -1,5 +1,3 @@
-# Coding-Problems
-```javascript
 function _char(x) {
 	// curryfication goes brrr...
     const _for = i => (_, s) => [
@@ -18,7 +16,6 @@ function _char(x) {
     return Math.round(v) - 592;
 }
 
-// YES
+// will output 'Michael'
 for (let x = 1; x <= 7; x++)
     console.log(String.fromCharCode (_char(x)))
-```

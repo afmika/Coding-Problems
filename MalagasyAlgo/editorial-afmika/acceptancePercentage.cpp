@@ -23,7 +23,7 @@ int main() {
         s += weights[t];
     }
     
-    // Complexity : O(P*T) in time / O(T) in space
+    // Complexity : O(P*T) time / O(T) space
     
     for (int p = 0; p < P; p++) {
         int ds = 0;

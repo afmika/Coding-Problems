@@ -14,12 +14,12 @@ using namespace std;
 // An *even length* palindrome looks like this : hannah, 1221, goog, aa
 // BUT here we are dealing with 'sentences' which may contain one or more palindromes
 // with a brute force approach we have to generate all possible *even length* substrings
-// we can do no better than O(n^2) in time complexity with this approach,
+// we can do no better than O(n^2) time complexity with this approach,
 // that's way too much since 1 <= T[i].length <= 200000
 
 // The trick is to use a stack then match every contiguous pair and remove it from our stack (pop it)
 // This works everytime because an *even length* palindrome can be reduced into an empty string ''
-// It runs O(n) in time / O(k) in space (k is the sum of the length of *non even length* palindromes, k <= n)
+// It runs O(n) time / O(k) space (k is the sum of the length of *non even length* palindromes, k <= n)
 // for a single sentence of length n
 
 // Let's take an example :
