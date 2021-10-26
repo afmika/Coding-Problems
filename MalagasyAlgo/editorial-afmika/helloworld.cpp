@@ -25,7 +25,7 @@ int main() {
     for (int i = 0, s = charset.size(); i < s; i++) {
         char c  = charset[i];     // the current character
         int occ = occur[i] - '0'; // total number of occurences of the current character in 'helloworld'
-        // if        occ ---> 1 helloworld
+        // if        occ ---> 1 'helloworld'
         // then count[c] ---> ?
 		// answer = count[c] * 1 / occ
         // /!\ the smallest redundant character has higher priority

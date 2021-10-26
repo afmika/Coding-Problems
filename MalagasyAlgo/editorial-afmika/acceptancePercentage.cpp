@@ -43,7 +43,7 @@ int main() {
         // then  ds ---> ?
         // answer = floor(ds * 100 / s)
         ds *= 100;
-        cout << (ds / s) << "\n";
+        cout << (ds / s) << '\n';
     }
     
     return 0;
