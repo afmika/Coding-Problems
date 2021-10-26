@@ -38,7 +38,7 @@ using namespace std;
 string solve (string &input) {
     stack<char> sofar;
     for (char c : input) {
-        if (c == ' ') continue;
+        if (c == ' ') continue;    // ignore spaces
         if (!sofar.empty()) {
             if (c == sofar.top()) // yay it's a match !
                 sofar.pop();
