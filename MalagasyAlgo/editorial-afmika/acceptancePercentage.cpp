@@ -9,13 +9,13 @@ using namespace std;
 
 int main() {
     // T : the weights of the test sets
-    // P : total number of the code submissions
+    // P : the total number of the code submissions
     int T, P;
 	
     cin >> T >> P;
     int weights[T];
     
-    // Fetch the weights
+    // fetch the weights
     // process the total sum at the same time
     int s = 0;
     for (int t = 0; t < T; t++) {
