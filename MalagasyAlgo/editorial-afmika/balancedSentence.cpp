@@ -8,13 +8,14 @@
 using namespace std;
 
 // the keypoints in order to understand what the problem really want us to do are :
-// - to ignore the spaces
+// - ignore the spaces
 // - focus on the *even length* palindrome part
 
 // an *even length* palindrome looks like this : hannah, 1221, goog, aa
 // BUT here we are dealing with 'sentences' which may contain one or more palindromes
 // with a brute force approach we have to generate all possible *even length* substrings
-// we get O(n^2) in time complexity which can be way too much since 1 <= T[i].length <= 200000
+// we can do no better than O(n^2) in time complexity with this approach
+// Which is way too much since 1 <= T[i].length <= 200000
 
 // the trick is to use a stack then match every contiguous pair and remove it from our stack (pop it)
 // this works everytime because an *even length* palindrome can be reduced into an empty string ''
