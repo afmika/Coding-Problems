@@ -10,19 +10,25 @@ using namespace std;
 int main() {
     string in;
     getline(cin, in);
+
+    // count the redundancy of every character
     map<char, int> count;
-    
     for (char &c : in)
         count[c]++;
     
-    // helloword = 1h + 1e + 3l + 2o + 1w + 1r + 1d
+    // we want to know how many 'helloworld' we can write using those characters
+    // helloword contains 1 h + 1 e + 3 l + 2 o + 1 w + 1 r + 1 d
     string charset = "helowrd";
     string occur   = "1132111";
     
     int ans = INT_MAX;
     for (int i = 0, s = charset.size(); i < s; i++) {
-        char c  = charset[i];
-        int occ = occur[i] - '0';
+        char c  = charset[i];     // the current character
+        int occ = occur[i] - '0'; // total number of occurences of the current character in 'helloworld'
+        // if        occ ---> 1 helloworld
+        // then count[c] ---> ?
+        // the smallest redundant character has higher priority
+        // hence the min function
         ans = min (ans, count[c] / occ);
     }
     cout << ans;
