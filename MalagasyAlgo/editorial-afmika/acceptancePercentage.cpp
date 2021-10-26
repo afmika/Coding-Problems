@@ -11,6 +11,7 @@ int main() {
     // T : the weights of the test sets
     // P : total number of the code submissions
     int T, P;
+	
     cin >> T >> P;
     int weights[T];
     
