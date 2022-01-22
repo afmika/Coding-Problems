@@ -8,7 +8,7 @@
 using namespace std;
 
 int main() {
-    // T : the weights of the test sets
+    // T : the weights of the test set
     // P : the total number of the code submissions
     int T, P;
 	
